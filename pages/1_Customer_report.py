@@ -680,7 +680,7 @@ def display_customer_report(data_plan_prod, data_float, rates, selected_interven
 
     
     # ✅ Formatage numérique AVANT styling
-    tableau_cumul_jours.iloc[:, 2:] = tableau_cumul_jours.iloc[:, 2:].applymap(lambda x: f"{x:.1f}")
+    tableau_cumul_jours.iloc[:, 2:] = tableau_cumul_jours.iloc[:, 2:].map(lambda x: f"{x:.1f}")
 
     # 🔹 Fonction de style sans colonne technique
     def style_personnalise(row):
@@ -754,7 +754,7 @@ def display_customer_report(data_plan_prod, data_float, rates, selected_interven
             return "0 €"
 
     # ✅ Formater seulement à la fin
-    tableau_cumul_ca.iloc[:, 2:] = tableau_cumul_ca.iloc[:, 2:].applymap(format_euro)
+    tableau_cumul_ca.iloc[:, 2:] = tableau_cumul_ca.iloc[:, 2:].map(format_euro)
 
     # 🔹 Style sans colonne technique
     def style_personnalise_ca(row):
@@ -1501,7 +1501,7 @@ elif selected == "Rapport Jours":
         
         # ✅ Formatage numérique AVANT styling
         
-        tableau_cumul_jours.iloc[:, 2:] = tableau_cumul_jours.iloc[:, 2:].applymap(lambda x: f"{x:.1f}")
+        tableau_cumul_jours.iloc[:, 2:] = tableau_cumul_jours.iloc[:, 2:].map(lambda x: f"{x:.1f}")
         # 🔹 Ajouter une colonne pour identifier la ligne "Total Général"
         tableau_cumul_jours["is_total_general"] = tableau_cumul_jours["Code Mission"] == "Total Général"
 
