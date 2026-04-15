@@ -679,8 +679,10 @@ def display_customer_report(data_plan_prod, data_float, rates, selected_interven
     tableau_cumul_jours.iloc[:, 2:] = tableau_cumul_jours.iloc[:, 2:].round(1)
 
     tableau_cumul_jours_display = tableau_cumul_jours.copy()
-    tableau_cumul_jours_display.iloc[:, 2:] = tableau_cumul_jours_display.iloc[:, 2:].astype(object)
-    tableau_cumul_jours_display.iloc[:, 2:] = tableau_cumul_jours_display.iloc[:, 2:].map(lambda x: f"{x:.1f}")
+
+    for col in tableau_cumul_jours_display.columns[2:]:
+        tableau_cumul_jours_display[col] = tableau_cumul_jours_display[col].astype("object")
+        tableau_cumul_jours_display[col] = tableau_cumul_jours_display[col].apply(lambda x: f"{x:.1f}")
     # 🔹 Fonction de style sans colonne technique
     def style_personnalise(row):
         styles = []
@@ -754,8 +756,10 @@ def display_customer_report(data_plan_prod, data_float, rates, selected_interven
 
     # ✅ Formater seulement à la fin
     tableau_cumul_ca_display = tableau_cumul_ca.copy()
-    tableau_cumul_ca_display.iloc[:, 2:] = tableau_cumul_ca_display.iloc[:, 2:].astype(object)
-    tableau_cumul_ca_display.iloc[:, 2:] = tableau_cumul_ca_display.iloc[:, 2:].map(format_euro)
+
+    for col in tableau_cumul_ca_display.columns[2:]:
+        tableau_cumul_ca_display[col] = tableau_cumul_ca_display[col].astype("object")
+        tableau_cumul_ca_display[col] = tableau_cumul_ca_display[col].apply(format_euro)
 
     # 🔹 Style sans colonne technique
     def style_personnalise_ca(row):
