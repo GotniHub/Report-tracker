@@ -678,14 +678,13 @@ def display_customer_report(data_plan_prod, data_float, rates, selected_interven
 
     tableau_cumul_jours.iloc[:, 2:] = tableau_cumul_jours.iloc[:, 2:].round(1)
 
-    
-    # ✅ Formatage numérique AVANT styling
-    tableau_cumul_jours.iloc[:, 2:] = tableau_cumul_jours.iloc[:, 2:].map(lambda x: f"{x:.1f}")
-
+    tableau_cumul_jours_display = tableau_cumul_jours.copy()
+    tableau_cumul_jours_display.iloc[:, 2:] = tableau_cumul_jours_display.iloc[:, 2:].astype(object)
+    tableau_cumul_jours_display.iloc[:, 2:] = tableau_cumul_jours_display.iloc[:, 2:].map(lambda x: f"{x:.1f}")
     # 🔹 Fonction de style sans colonne technique
     def style_personnalise(row):
         styles = []
-        is_total_row = row.name == len(tableau_cumul_jours) - 1  # dernière ligne
+        is_total_row = row.name == len(tableau_cumul_jours_display) - 1 # dernière ligne
 
         for col in tableau_cumul_jours.columns:
             style = ""
@@ -702,7 +701,7 @@ def display_customer_report(data_plan_prod, data_float, rates, selected_interven
             styles.append(style)
         return styles
 
-    styled_df = tableau_cumul_jours.style.apply(style_personnalise, axis=1).hide(axis="index")
+    styled_df = tableau_cumul_jours_display.style.apply(style_personnalise, axis=1).hide(axis="index")
 
     st.subheader("Cumul Jours de production réalisés")
     st.dataframe(styled_df, use_container_width=True, hide_index=True)
@@ -754,12 +753,14 @@ def display_customer_report(data_plan_prod, data_float, rates, selected_interven
             return "0 €"
 
     # ✅ Formater seulement à la fin
-    tableau_cumul_ca.iloc[:, 2:] = tableau_cumul_ca.iloc[:, 2:].map(format_euro)
+    tableau_cumul_ca_display = tableau_cumul_ca.copy()
+    tableau_cumul_ca_display.iloc[:, 2:] = tableau_cumul_ca_display.iloc[:, 2:].astype(object)
+    tableau_cumul_ca_display.iloc[:, 2:] = tableau_cumul_ca_display.iloc[:, 2:].map(format_euro)
 
     # 🔹 Style sans colonne technique
     def style_personnalise_ca(row):
         styles = []
-        is_total_row = row.name == len(tableau_cumul_ca) - 1
+        is_total_row = row.name == len(tableau_cumul_ca_display) - 1
 
         for col in tableau_cumul_ca.columns:
             style = ""
@@ -776,7 +777,7 @@ def display_customer_report(data_plan_prod, data_float, rates, selected_interven
             styles.append(style)
         return styles
 
-    styled_ca_df = tableau_cumul_ca.style.apply(style_personnalise_ca, axis=1).hide(axis="index")
+    styled_ca_df = tableau_cumul_ca_display.style.apply(style_personnalise_ca, axis=1).hide(axis="index")
 
     st.subheader("Cumul du CA Engagé")
     st.dataframe(styled_ca_df, use_container_width=True, hide_index=True)
