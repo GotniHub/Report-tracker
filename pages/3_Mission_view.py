@@ -767,7 +767,7 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
     styled = (
     df_display.style
     .apply(style_excel_like, axis=1)
-    .applymap(color_ecart, subset=[
+    .map(color_ecart, subset=[
         "Ecart (Jour)",
         "Ecart",
         "Ecart % (Jour)",
@@ -955,7 +955,7 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
         df_display
         .style
         .apply(style_budget_tables, axis=1)
-        .applymap(color_remaining, subset=[c for c in df_display.columns if "Restant" in c])
+        .map(color_remaining, subset=[c for c in df_display.columns if "Restant" in c])
     )
 
     st.dataframe(styled_jours, use_container_width=True, hide_index=True)
@@ -1136,7 +1136,7 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
         df_display_ca
         .style
         .apply(style_budget_tables, axis=1)
-        .applymap(color_remaining, subset=[c for c in df_display_ca.columns if "Restant" in c])
+        .map(color_remaining, subset=[c for c in df_display_ca.columns if "Restant" in c])
     )
 
     st.dataframe(styled_ca, use_container_width=True, hide_index=True)
