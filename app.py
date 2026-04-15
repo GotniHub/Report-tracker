@@ -11,13 +11,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-import streamlit as st
 
-def require_auth():
-    if not st.session_state.get("authenticated", False):
-        st.warning("Accès refusé. Veuillez vous connecter d'abord.")
-        st.switch_page("app.py")   # mets ici le vrai nom du fichier principal
-        st.stop()
+from auth import require_auth
+
 st.logo("Logo_Advent.png", icon_image="Logom.png")
 # =========================================================
 # CSS GLOBAL

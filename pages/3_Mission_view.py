@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import re
 import locale
 import os
-from app import require_auth
+from auth import require_auth
 require_auth()
 try:
     locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')

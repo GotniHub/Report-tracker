@@ -8,7 +8,7 @@ import numpy as np
 import streamlit.components.v1 as components  # Ajout de l'import correct
 import locale
 from ui import inject_shared_css, show_sidebar
-from app import require_auth
+from auth import require_auth
 require_auth()
 # locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
 st.logo("Logo_Advent.png", icon_image="Logom.png")

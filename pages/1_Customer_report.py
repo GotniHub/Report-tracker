@@ -12,7 +12,7 @@ import streamlit.components.v1 as components  # Ajout de l'import correct
 import locale
 import plotly.graph_objects as go
 from streamlit_option_menu import option_menu # type: ignore
-from app import require_auth
+from auth import require_auth
 
 require_auth()
 

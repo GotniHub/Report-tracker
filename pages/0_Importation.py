@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import time
-from app import require_auth
+from auth import require_auth
 
 st.set_page_config(page_title="Importation", page_icon="📊", layout="wide")
 st.logo("Logo_Advent.png", icon_image="Logom.png")
@@ -285,42 +285,11 @@ def preprocess_data(data_plan_prod, data_float, rates):
 # =========================================================
 # UI
 # =========================================================
-from app import require_auth
 from ui import inject_shared_css, show_sidebar
 
 inject_shared_css()
 show_sidebar()
-import base64
 
-def get_image_base64(image_path):
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode()
-
-logo_base64 = get_image_base64("Logo_Africa.png")  # ✅ Racine du projet
-
-st.sidebar.markdown("---")
-
-st.sidebar.markdown(
-    f"""
-    <div style="text-align: center; padding: 15px 10px; font-family: 'Segoe UI', sans-serif;">
-        <p style="font-size: 12px; color: #888; margin: 0 0 6px 0; letter-spacing: 0.5px;">
-            Developed by
-        </p>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 10px;">
-            <p style="font-size: 15px; font-weight: 700; color: #0033A0; margin: 0; letter-spacing: 1px;">
-                Ilyass GOTNI
-            </p>
-            <img src="data:image/png;base64,{logo_base64}" style="height: 35px; width: auto; object-fit: contain;"/>
-        </div>
-        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 8px 0;">
-        <p style="font-size: 10px; color: #aaa; margin: 0; letter-spacing: 0.3px;">
-            © 2026 · All Rights Reserved<br>
-            Unauthorized use prohibited
-        </p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 st.markdown("""
 <div class="import-hero">
     <div class="import-badge">📂 Data Intake • Import Workspace</div>
