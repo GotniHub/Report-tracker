@@ -813,7 +813,7 @@ def show_sidebar():
             st.session_state["show_logout_modal"] = False
 
         # Bouton logout
-        if st.button("🔒 Se déconnecter"):
+        if st.button("⇦ Se déconnecter", key="logout_sidebar"):
             st.session_state["show_logout_modal"] = True
             st.rerun()
             
@@ -857,11 +857,11 @@ def show_logout_dialog():
     )
     c1, c2 = st.columns(2)
     with c1:
-        if st.button("❌ Annuler", use_container_width=True):
+        if st.button("❌ Annuler", key="logout_cancel_dialog", use_container_width=True):
             st.session_state["show_logout_modal"] = False
             st.rerun()
     with c2:
-        if st.button("✅ Oui, déconnecter", use_container_width=True):
+        if st.button("✅ Oui, déconnecter", key="logout_confirm_dialog", use_container_width=True):
             st.session_state["show_logout_modal"] = False
             logout()
 
