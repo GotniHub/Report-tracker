@@ -583,47 +583,47 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
     pct_jours = (jours_realises_total / jours_budget_total * 100) if jours_budget_total > 0 else 0
     pct_jours_restants = 100 - pct_jours
 
-    st.subheader("Jours (Intervenant)")
-    st.markdown('<div class="card-container">', unsafe_allow_html=True)
-    c1, c2, c3, c4 = st.columns(4)
+    # st.subheader("Jours (Intervenant)")
+    # st.markdown('<div class="card-container">', unsafe_allow_html=True)
+    # c1, c2, c3, c4 = st.columns(4)
 
-    with c1:
-        st.markdown(f"""
-            <div class="card">
-                <div class="metric">{jours_budget_total:.1f} jours</div>
-                <div class="label">Jours Budget</div>
-                <div class="delta positive">100%</div>
-            </div>
-        """, unsafe_allow_html=True)
+    # with c1:
+    #     st.markdown(f"""
+    #         <div class="card">
+    #             <div class="metric">{jours_budget_total:.1f} jours</div>
+    #             <div class="label">Jours Budget</div>
+    #             <div class="delta positive">100%</div>
+    #         </div>
+    #     """, unsafe_allow_html=True)
 
-    with c2:
-        st.markdown(f"""
-            <div class="card">
-                <div class="metric">{jours_realises_total:.1f} jours</div>
-                <div class="label">Jours Réalisés</div>
-                <div class="delta positive">{pct_jours:.0f}%</div>
-            </div>
-        """, unsafe_allow_html=True)
+    # with c2:
+    #     st.markdown(f"""
+    #         <div class="card">
+    #             <div class="metric">{jours_realises_total:.1f} jours</div>
+    #             <div class="label">Jours Réalisés</div>
+    #             <div class="delta positive">{pct_jours:.0f}%</div>
+    #         </div>
+    #     """, unsafe_allow_html=True)
 
-    with c3:
-        st.markdown(f"""
-            <div class="card">
-                <div class="metric">{jours_restants:.1f} jours</div>
-                <div class="label">Jours Restants</div>
-                <div class="delta {get_delta_class(jours_restants)}">{pct_jours_restants:.0f}%</div>
-            </div>
-        """, unsafe_allow_html=True)
+    # with c3:
+    #     st.markdown(f"""
+    #         <div class="card">
+    #             <div class="metric">{jours_restants:.1f} jours</div>
+    #             <div class="label">Jours Restants</div>
+    #             <div class="delta {get_delta_class(jours_restants)}">{pct_jours_restants:.0f}%</div>
+    #         </div>
+    #     """, unsafe_allow_html=True)
 
-    with c4:
-        st.markdown(f"""
-            <div class="card">
-                <div class="metric">{pct_jours:.1f}%</div>
-                <div class="label">Avancement</div>
-                <div class="delta {'negative' if pct_jours >= 100 else 'positive'}">- {jours_restants:.1f} j restants</div>
-            </div>
-        """, unsafe_allow_html=True)
+    # with c4:
+    #     st.markdown(f"""
+    #         <div class="card">
+    #             <div class="metric">{pct_jours:.1f}%</div>
+    #             <div class="label">Avancement</div>
+    #             <div class="delta {'negative' if pct_jours >= 100 else 'positive'}">- {jours_restants:.1f} j restants</div>
+    #         </div>
+    #     """, unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    # st.markdown("</div>", unsafe_allow_html=True)
 
     # -----------------------
     # ✅ TABLE EXCEL-LIKE : PAR MISSION
