@@ -854,11 +854,11 @@ def show_logout_dialog():
     c1, c2 = st.columns(2)
     with c1:
         if st.button("❌ Annuler", key="logout_cancel_dialog", use_container_width=True):
-            st.session_state["show_logout_modal"] = False
+            # st.session_state["show_logout_modal"] = False
             st.rerun()
     with c2:
         if st.button("✅ Oui, déconnecter", key="logout_confirm_dialog", use_container_width=True):
-            st.session_state["show_logout_modal"] = False
+            # st.session_state["show_logout_modal"] = False
             logout()
 
 def show_topbar():
@@ -1017,7 +1017,9 @@ if not st.session_state["authenticated"]:
     st.stop()
 
 show_sidebar()
+# ✅ FIX : reset préventif avant d'appeler le dialog
 if st.session_state.get("show_logout_modal", False):
+    st.session_state["show_logout_modal"] = False  # reset préventif
     show_logout_dialog()
 
 page = st.session_state["current_page"]
