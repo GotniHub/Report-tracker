@@ -195,6 +195,11 @@ def show_sidebar():
         if st.button("🔒 Se déconnecter"):
             st.session_state["show_logout_modal"] = True
             st.rerun()
+            
+    # ✅ FIX : reset systématique avant d'appeler le dialog
+    if st.session_state.get("show_logout_modal", False):
+        st.session_state["show_logout_modal"] = False  # reset préventif
+        show_logout_dialog()
 
     # Appelé HORS du bloc sidebar pour que le dialog s'affiche au centre
     if st.session_state.get("show_logout_modal", False):
