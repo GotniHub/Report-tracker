@@ -775,7 +775,21 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
     ])
 )
 
-    st.table(styled)
+    html_table = styled.to_html()
+
+    st.markdown(
+        f"""
+        <div style="
+            overflow-x: auto;
+            overflow-y: visible;
+            width: 100%;
+            margin-bottom: 20px;
+        ">
+            {html_table}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     st.subheader(" Suivi détaillé Budget mensuel / Réalisé / Restant par mission")
     st.caption("ℹ️ Budget mensuel calculé à partir du budget annuel divisé par 12.")
@@ -958,7 +972,7 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
         .map(color_remaining, subset=[c for c in df_display.columns if "Restant" in c])
     )
 
-    st.dataframe(styled_jours, use_container_width=True, hide_index=True, height=650)
+    st.table(styled_jours)
 
     st.subheader("Suivi détaillé CA mensuel / Produit / Restant par mission")
     st.caption("ℹ️ Budget mensuel calculé à partir du budget annuel divisé par 12.")
