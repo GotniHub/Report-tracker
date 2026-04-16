@@ -543,38 +543,38 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
     def get_delta_class(x):
         return "positive" if x >= 0 else "negative"
 
-    st.subheader("Budget (Intervenant)")
-    st.markdown('<div class="card-container">', unsafe_allow_html=True)
-    c1, c2, c3 = st.columns(3)
+    # st.subheader("Budget (Intervenant)")
+    # st.markdown('<div class="card-container">', unsafe_allow_html=True)
+    # c1, c2, c3 = st.columns(3)
 
-    with c1:
-        st.markdown(f"""
-            <div class="card">
-                <div class="metric">{ca_budget_total:,.0f} €</div>
-                <div class="label">CA Budget</div>
-                <div class="delta positive">100%</div>
-            </div>
-        """.replace(",", " "), unsafe_allow_html=True)
+    # with c1:
+    #     st.markdown(f"""
+    #         <div class="card">
+    #             <div class="metric">{ca_budget_total:,.0f} €</div>
+    #             <div class="label">CA Budget</div>
+    #             <div class="delta positive">100%</div>
+    #         </div>
+    #     """.replace(",", " "), unsafe_allow_html=True)
 
-    with c2:
-        st.markdown(f"""
-            <div class="card">
-                <div class="metric">{ca_engage_total:,.0f} €</div>
-                <div class="label">CA Produit (CA Engagé)</div>
-                <div class="delta {get_delta_class(pct_used)}">{pct_used:.0f}%</div>
-            </div>
-        """.replace(",", " "), unsafe_allow_html=True)
+    # with c2:
+    #     st.markdown(f"""
+    #         <div class="card">
+    #             <div class="metric">{ca_engage_total:,.0f} €</div>
+    #             <div class="label">CA Produit (CA Engagé)</div>
+    #             <div class="delta {get_delta_class(pct_used)}">{pct_used:.0f}%</div>
+    #         </div>
+    #     """.replace(",", " "), unsafe_allow_html=True)
 
-    with c3:
-        st.markdown(f"""
-            <div class="card">
-                <div class="metric">{solde_ca:,.0f} €</div>
-                <div class="label">Solde restant</div>
-                <div class="delta {get_delta_class(pct_remaining)}">{pct_remaining:.0f}%</div>
-            </div>
-        """.replace(",", " "), unsafe_allow_html=True)
+    # with c3:
+    #     st.markdown(f"""
+    #         <div class="card">
+    #             <div class="metric">{solde_ca:,.0f} €</div>
+    #             <div class="label">Solde restant</div>
+    #             <div class="delta {get_delta_class(pct_remaining)}">{pct_remaining:.0f}%</div>
+    #         </div>
+    #     """.replace(",", " "), unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    # st.markdown("</div>", unsafe_allow_html=True)
 
     # -----------------------
     # ✅ CARDS Jours
