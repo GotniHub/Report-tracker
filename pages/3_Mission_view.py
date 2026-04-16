@@ -1395,7 +1395,10 @@ if "data_plan_prod" in st.session_state and "data_float" in st.session_state and
     m = m[(m["Budget_J"] > 0) | (m["Heures"] > 0)]
 
     missions_disponibles = sorted(m["Code Mission"].unique().tolist())
-
+    # Détecte changement d'acteur et reset les missions
+    if st.session_state.get("last_acteur") != acteur_filter:
+        st.session_state["last_acteur"] = acteur_filter
+        st.session_state["missions_selector"] = missions_disponibles  # reset complet
     selected_missions = st.sidebar.multiselect(
         "📌 Filtrer par mission(s) (optionnel)",
         options=missions_disponibles,
