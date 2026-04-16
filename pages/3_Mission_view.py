@@ -775,19 +775,7 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
     ])
 )
 
-    nb_lignes = len(df_display)
-
-    hauteur_tableau = min(
-        56 + (nb_lignes * 42),   # header + lignes
-        650
-    )
-
-    st.dataframe(
-        styled,
-        use_container_width=True,
-        hide_index=True,
-        height=hauteur_tableau
-    )
+    st.dataframe(styled, use_container_width=True, hide_index=True, height=520)
 
     st.subheader(" Suivi détaillé Budget mensuel / Réalisé / Restant par mission")
     st.caption("ℹ️ Budget mensuel calculé à partir du budget annuel divisé par 12.")
