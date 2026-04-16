@@ -749,16 +749,16 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
 
     def style_excel_like(row):
         styles = []
-        is_total = (row["Code Mission"] == "TOTAL")
         for col in df_display.columns:
             s = ""
-            if is_total:
-                s += "background-color: rgba(0, 51, 160, 0.40); font-weight: bold;"
-            elif col in ["Code Mission", "Nom de la mission"]:
+            
+            if col in ["Code Mission", "Nom de la mission"]:
                 s += "background-color: #E6E7E8;"
             else:
                 s += "background-color: rgba(0, 51, 160, 0.20);"
+            
             styles.append(s)
+        
         return styles
 
     # styled = df_display.style.apply(style_excel_like, axis=1)
