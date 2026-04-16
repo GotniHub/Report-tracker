@@ -778,7 +778,7 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
 
     ROW_HEIGHT = 35   # hauteur px par ligne
     HEADER_HEIGHT = 38
-    MAX_HEIGHT = 600  # plafond si trop de lignes
+    MAX_HEIGHT = 2000  # plafond si trop de lignes
 
     def df_height(df: pd.DataFrame) -> int:
         return min(HEADER_HEIGHT + len(df) * ROW_HEIGHT, MAX_HEIGHT)
