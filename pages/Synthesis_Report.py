@@ -170,39 +170,21 @@ def display_customer_report(data_plan_prod, data_float, rates):
 
     st.sidebar.markdown(
         f"""
-        <style>
-        [data-testid="stSidebarContent"] {{
-            position: relative;
-            height: 100%;
-        }}
-        .footer-sidebar {{
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 260px;
-            background: white;
-            border-top: 1px solid #e0e0e0;
-            z-index: 999;
-            padding: 12px 10px;
-        }}
-        </style>
-        <div class="footer-sidebar">
-            <div style="text-align: center; font-family: 'Segoe UI', sans-serif;">
-                <p style="font-size: 12px; color: #888; margin: 0 0 6px 0; letter-spacing: 0.5px;">
-                    Developed by
+        <div style="text-align: center; padding: 15px 10px; font-family: 'Segoe UI', sans-serif;">
+            <p style="font-size: 12px; color: #888; margin: 0 0 6px 0; letter-spacing: 0.5px;">
+                Developed by
+            </p>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 10px;">
+                <p style="font-size: 15px; font-weight: 700; color: #0033A0; margin: 0; letter-spacing: 1px;">
+                    Ilyass GOTNI
                 </p>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 10px;">
-                    <p style="font-size: 15px; font-weight: 700; color: #0033A0; margin: 0; letter-spacing: 1px;">
-                        Ilyass GOTNI
-                    </p>
-                    <img src="data:image/png;base64,{logo_base64}" style="height: 35px; width: auto; object-fit: contain;"/>
-                </div>
-                <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 8px 0;">
-                <p style="font-size: 10px; color: #aaa; margin: 0; letter-spacing: 0.3px;">
-                    © 2026 · All Rights Reserved<br>
-                    Unauthorized use prohibited
-                </p>
+                <img src="data:image/png;base64,{logo_base64}" style="height: 35px; width: auto; object-fit: contain;"/>
             </div>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 8px 0;">
+            <p style="font-size: 10px; color: #aaa; margin: 0; letter-spacing: 0.3px;">
+                © 2026 · All Rights Reserved<br>
+                Unauthorized use prohibited
+            </p>
         </div>
         """,
         unsafe_allow_html=True
