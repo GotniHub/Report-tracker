@@ -774,8 +774,16 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
         "Ecart %"
     ])
 )
+    # Remplace tes 3 st.dataframe(...) par ceci :
 
-    st.dataframe(styled, use_container_width=True, hide_index=True)
+    ROW_HEIGHT = 35   # hauteur px par ligne
+    HEADER_HEIGHT = 38
+    MAX_HEIGHT = 600  # plafond si trop de lignes
+
+    def df_height(df: pd.DataFrame) -> int:
+        return min(HEADER_HEIGHT + len(df) * ROW_HEIGHT, MAX_HEIGHT)
+    
+    st.dataframe(styled, use_container_width=True, hide_index=True, height=df_height(df_display))
 
     st.subheader(" Suivi détaillé Budget mensuel / Réalisé / Restant par mission")
     st.caption("ℹ️ Budget mensuel calculé à partir du budget annuel divisé par 12.")
