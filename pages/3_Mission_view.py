@@ -14,6 +14,178 @@ st.logo("Logo_Advent.png", icon_image="Logom.png")
 # (garde ton CSS ici comme tu l'as déjà)
 # st.markdown(""" <style> ... </style> """, unsafe_allow_html=True)
 # Injecter le CSS pour les cards
+st.markdown("""
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background:
+            radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.12), transparent 22%),
+            radial-gradient(circle at 80% 18%, rgba(147, 197, 253, 0.16), transparent 20%),
+            radial-gradient(circle at 50% 75%, rgba(96, 165, 250, 0.10), transparent 28%),
+            linear-gradient(180deg, #f8fbff 0%, #eef4ff 52%, #e9f0fb 100%);
+        min-height: 100vh;
+    }
+
+    [data-testid="stAppViewContainer"]::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+        background-size: 42px 42px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    [data-testid="stAppViewContainer"] > [data-testid="stMain"] {
+        position: relative;
+        z-index: 1;
+    }
+    .card-container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    .title {
+        font-family: 'Arial', sans-serif;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    .card {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.94) 100%);
+        border: 1px solid rgba(226, 232, 240, 0.95);
+        border-radius: 22px;
+        padding: 24px 22px;
+        text-align: center;
+        flex: 1;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+        backdrop-filter: blur(10px);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    /* halo léger dans la card */
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(59,130,246,0.12), transparent 35%);
+        pointer-events: none;
+    }
+
+    /* ligne brillante en haut */
+    .card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 18px;
+        right: 18px;
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #60a5fa, #2563eb, #1d4ed8);
+        opacity: 0.9;
+    }
+
+    /* effet dynamique */
+    .card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(37, 99, 235, 0.25);
+        box-shadow: 0 18px 40px rgba(37, 99, 235, 0.14);
+    }
+
+    /* chiffre principal */
+    .metric {
+        position: relative;
+        z-index: 1;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.03em;
+        margin-bottom: 8px;
+    }
+
+    /* libellé */
+    .label {
+        position: relative;
+        z-index: 1;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #64748b;
+        margin-bottom: 10px;
+    }
+
+    /* delta */
+    .delta {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-top: 6px;
+        background: rgba(15, 23, 42, 0.04);
+    }
+
+    .positive {
+        color: #15803d;
+        background: rgba(34, 197, 94, 0.12);
+    }
+
+    .negative {
+        color: #dc2626;
+        background: rgba(239, 68, 68, 0.12);
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+/* ✅ Box 3D identique à Customer Report */
+.mission-box{
+  border: 2px solid #0033A0;
+  border-radius: 12px;
+  overflow: hidden;                 
+  background: #fff;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45);
+  display: inline-block;
+}
+
+/* ✅ Table : supprime espace blanc inutile */
+.mission-box table{
+  border-collapse: collapse;
+  width: 420px;
+  font-size: 1rem;
+  margin: 0 !important;
+}
+
+.mission-box td{
+  border: 1px solid #cfcfcf;
+  padding: 12px 14px;
+  font-weight: bold;
+  line-height: 1.1;          /* ✅ enlève l’espace vertical */
+  vertical-align: middle;    /* ✅ centre le contenu */
+}
+
+/* ✅ Colonne labels (comme ancien) */
+.mission-box td:nth-child(1){
+  background-color: rgba(0, 51, 160, 0.20);
+  color: black;
+  text-align: left;
+  width: 55%;
+}
+
+/* ✅ Colonne valeurs */
+.mission-box td:nth-child(2){
+  background-color: #E6E7E8;
+  color: black;
+  text-align: right;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # ✅ Mapping Entreprise (Rates) -> fichier logo (dans ton root)
 COMPANY_LOGO_MAP = {
