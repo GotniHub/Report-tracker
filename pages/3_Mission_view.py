@@ -775,7 +775,7 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
     ])
 )
 
-    st.dataframe(styled, use_container_width=True, hide_index=True, height=700)
+    st.dataframe(styled, use_container_width=True, hide_index=True, height=100)
 
     st.subheader(" Suivi détaillé Budget mensuel / Réalisé / Restant par mission")
     st.caption("ℹ️ Budget mensuel calculé à partir du budget annuel divisé par 12.")
