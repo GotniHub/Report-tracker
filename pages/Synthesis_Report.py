@@ -158,6 +158,33 @@ def display_customer_report(data_plan_prod, data_float, rates):
     else:
         filtered_float = data_float[data_float["Code Mission"].isin(missions_selectionnees)]
 
+    # Vérifier si les données existent après le filtre de mission
+    if filtered_plan_prod.empty or filtered_float.empty:
+        st.warning("Aucune donnée disponible pour la mission sélectionnée.")
+        st.stop()
+        
+    # 🔹 **Ajouter les filtres de période**
+    date_min = filtered_float["Date"].min()
+    date_max = filtered_float["Date"].max()
+
+    date_debut = st.sidebar.date_input("📅 Date Début", value=date_min)
+    date_fin = st.sidebar.date_input("📅 Date Fin", value=date_max)
+
+    # 🔹 Convertir les dates choisies en format datetime
+    date_debut = pd.to_datetime(date_debut)
+    date_fin = pd.to_datetime(date_fin)
+
+    # 🟢 **Application du Filtre de Période**
+    if date_debut and date_fin:
+        filtered_float = filtered_float[(filtered_float["Date"] >= date_debut) & (filtered_float["Date"] <= date_fin)]
+    else:
+        filtered_float = data_float.copy()
+
+        # 🔹 Vérification de la présence des données après filtrage
+    if filtered_float.empty:
+        st.warning("⚠️ Aucune donnée disponible pour la période sélectionnée.")
+        st.stop()
+
     import base64
 
     def get_image_base64(image_path):
@@ -189,35 +216,7 @@ def display_customer_report(data_plan_prod, data_float, rates):
         """,
         unsafe_allow_html=True
     )
-
-
-    # Vérifier si les données existent après le filtre de mission
-    if filtered_plan_prod.empty or filtered_float.empty:
-        st.warning("Aucune donnée disponible pour la mission sélectionnée.")
-        st.stop()
-        
-    # 🔹 **Ajouter les filtres de période**
-    date_min = filtered_float["Date"].min()
-    date_max = filtered_float["Date"].max()
-
-    date_debut = st.sidebar.date_input("📅 Date Début", value=date_min)
-    date_fin = st.sidebar.date_input("📅 Date Fin", value=date_max)
-
-    # 🔹 Convertir les dates choisies en format datetime
-    date_debut = pd.to_datetime(date_debut)
-    date_fin = pd.to_datetime(date_fin)
-
-    # 🟢 **Application du Filtre de Période**
-    if date_debut and date_fin:
-        filtered_float = filtered_float[(filtered_float["Date"] >= date_debut) & (filtered_float["Date"] <= date_fin)]
-    else:
-        filtered_float = data_float.copy()
-
-        # 🔹 Vérification de la présence des données après filtrage
-    if filtered_float.empty:
-        st.warning("⚠️ Aucune donnée disponible pour la période sélectionnée.")
-        st.stop()
-
+    
     # 🔹 **Finaliser les variables**
     final_plan_prod = filtered_plan_prod.copy()
     final_float = filtered_float.copy()
