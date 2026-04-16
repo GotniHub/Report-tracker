@@ -776,7 +776,11 @@ def display_actor_report(data_plan_prod, data_float, rates, acteur_filter, selec
 )
 
     nb_lignes = len(df_display)
-    hauteur_tableau = min(max((nb_lignes + 1) * 35, 120), 650)
+
+    hauteur_tableau = min(
+        56 + (nb_lignes * 42),   # header + lignes
+        650
+    )
 
     st.dataframe(
         styled,
