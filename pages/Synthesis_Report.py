@@ -603,7 +603,7 @@ def display_customer_report(data_plan_prod, data_float, rates):
         titre += " par intervenant"
 
     st.subheader(titre)
-    st.dataframe(styled_df, use_container_width=True)
+    st.dataframe(styled_df, use_container_width=True, hide_index=True, column_config={"is_total_general": None})
 
 
     # with col2:
@@ -700,7 +700,7 @@ def display_customer_report(data_plan_prod, data_float, rates):
         titre_ca += " par intervenant"
 
     st.subheader(titre_ca)
-    st.dataframe(styled_ca_df, use_container_width=True)
+    st.dataframe(styled_ca_df, use_container_width=True, hide_index=True, column_config={"is_total_general": None})
 
         # Détails des intervenants
     st.subheader("Détails générales des intervenants ")
@@ -786,8 +786,7 @@ def display_customer_report(data_plan_prod, data_float, rates):
     styled_intervenants = intervenants.style.apply(style_intervenants, axis=1)
 
     # 📌 Affichage
-    st.dataframe(styled_intervenants, use_container_width=True)
-
+    st.dataframe(styled_intervenants, use_container_width=True, hide_index=True)
     # Graphiques
     st.subheader("Visualisations")
 
